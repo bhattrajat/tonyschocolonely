@@ -26,7 +26,7 @@ export default function Search() {
         <input
           id="search"
           placeholder="SEARCH"
-          className="w-full rounded-full border-2 border-black bg-transparent px-12 py-8 text-black placeholder:text-black focus:shadow-[2px_2px_0px_rgba(0,0,0,1)] focus:outline-none active:shadow-[2px_2px_0px_rgba(0,0,0,1)]"
+          className="w-full rounded-full border-2 border-black bg-transparent px-12 py-8 text-xl uppercase text-black placeholder:overflow-visible placeholder:text-xl placeholder:text-black focus:shadow-brutal focus:outline-none active:shadow-brutal"
           type="search"
           name="search"
           aria-label="Search"
