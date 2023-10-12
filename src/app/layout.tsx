@@ -3,6 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Cutive } from "next/font/google";
 import { Providers } from "./providers";
+import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/solid";
 
 const cutive = Cutive({
   subsets: ["latin-ext"],
@@ -27,6 +28,17 @@ export default function RootLayout({
           <Header />
           {children}
         </Providers>
+        <footer className="flex justify-between bg-black p-4 text-white">
+          <a
+            className="flex items-center underline"
+            href="tonyschocolonely.tinloof.com"
+            target="_blank"
+          >
+            Inspired by Tinloof{" "}
+            <ArrowTopRightOnSquareIcon className="ml-2 inline-block h-4 w-4" />
+          </a>
+          <p>Created with Next 13, Supabase, Tailwind & Stripe</p>
+        </footer>
       </body>
     </html>
   );
