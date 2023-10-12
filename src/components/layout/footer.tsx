@@ -2,7 +2,7 @@ import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/solid";
 
 export default function Footer() {
   return (
-    <footer className="flex justify-between bg-black p-4 text-white">
+    <footer className="flex flex-col justify-between bg-black p-4 text-white lg:flex-row">
       <a
         className="flex items-center underline"
         href="tonyschocolonely.tinloof.com"
