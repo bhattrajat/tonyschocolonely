@@ -77,9 +77,9 @@ export default function Cart() {
                 {Object.values(cartDetails ?? {}).map((product) => (
                   <div
                     key={product.id}
-                    className="my-4 flex gap-4 rounded-2xl border-2 border-black bg-white p-8 shadow-brutal"
+                    className="my-4 flex gap-4 rounded-2xl border-2 border-black bg-white p-4 shadow-brutal lg:p-8"
                   >
-                    <div className="flex basis-1/3 items-center justify-center p-4">
+                    <div className="basis:1/4 flex items-center justify-center p-4 lg:basis-1/3">
                       <Image
                         src={product.image_url}
                         alt={product.name}

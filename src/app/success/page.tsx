@@ -17,15 +17,15 @@ export default function SuccessPage() {
   }, []);
 
   return (
-    <main className="flex min-h-screen justify-center bg-yellow-400 p-8 text-2xl text-black">
-      <div className="h-48 rounded-2xl border-2 border-black bg-white p-4 shadow-brutal">
+    <main className="flex min-h-screen items-center justify-center bg-yellow-400 p-8 text-2xl text-black">
+      <div className="max-h-min rounded-2xl border-2 border-black bg-white p-4 shadow-brutal">
         <h2 className="my-4">
           Your order has been placed successfully. <br /> Please check your
           email for order info
         </h2>
         <Link className="underline" href="/">
           Click here
-        </Link>
+        </Link>{" "}
         to place another order
       </div>
     </main>
