@@ -17,14 +17,23 @@ export default async function Home({
 
   let query = supabase.from("products").select();
   const searchQuery = searchParams["search"];
+  const sortBy = searchParams["sortBy"];
   if (typeof searchQuery === "string" && searchQuery) {
     query = query.ilike("name", `%${searchQuery}%`);
+  }
+  if (typeof sortBy === "string" && sortBy) {
+    console.log(sortBy);
+    if (sortBy === "priceAsc") {
+      query = query.order("price", { ascending: true });
+    } else {
+      query = query.order("price", { ascending: false });
+    }
   }
   const { data: products } = await query;
 
   return (
     <main className="min-h-screen bg-yellow-400 p-8">
-      <section className="flex flex-col gap-4 lg:flex-row">
+      <section className="relative flex flex-col gap-4 lg:flex-row">
         <Search />
         <Filters />
       </section>

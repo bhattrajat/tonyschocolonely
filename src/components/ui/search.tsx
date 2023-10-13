@@ -1,7 +1,7 @@
 "use client";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { FormEvent } from "react";
+import { ChangeEvent, FormEvent } from "react";
 
 export default function Search() {
   const router = useRouter();
@@ -16,6 +16,10 @@ export default function Search() {
     if (searchQuery) params.set("search", searchQuery);
     else params.delete("search");
     router.push(pathname + "?" + params.toString());
+  };
+
+  const checkEvent = (e: ChangeEvent<HTMLInputElement>) => {
+    console.log(e);
   };
   return (
     <form onSubmit={addSearchParam} className="w-full lg:w-auto lg:flex-grow">

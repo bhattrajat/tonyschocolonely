@@ -1,13 +1,16 @@
 "use client";
 import { ShoppingBagIcon, XMarkIcon } from "@heroicons/react/24/solid";
+import { useClickAway } from "@uidotdev/usehooks";
 import Image from "next/image";
 import { useState } from "react";
 import { useShoppingCart } from "use-shopping-cart";
+
 export default function Cart() {
   const {
     handleCartClick,
     shouldDisplayCart,
     cartCount,
+    handleCloseCart,
     totalPrice,
     currency,
     redirectToCheckout,
@@ -15,7 +18,13 @@ export default function Cart() {
     addItem,
     decrementItem,
     clearCart,
+    removeItem,
   } = useShoppingCart();
+
+  const ref = useClickAway<HTMLDivElement>(() => {
+    handleCloseCart();
+  });
+
   const [status, setStatus] = useState<string | null>(null);
 
   const handleCheckout = async () => {
@@ -55,6 +64,7 @@ export default function Cart() {
         {/* {shouldDisplayCart ? 'cart should display' : 'cart should not display'} */}
       </button>
       <div
+        ref={ref}
         className={`fixed right-0 top-0 z-10 flex h-full flex-col justify-between border-l-2 border-black bg-yellow-400 text-black transition-transform lg:w-2/5 ${
           shouldDisplayCart ? "translate-x-0" : "translate-x-full"
         }`}
@@ -91,7 +101,10 @@ export default function Cart() {
                     <div className="flex basis-2/3 flex-col justify-between">
                       <div className="flex items-center justify-between">
                         <h3>{product.name}</h3>
-                        <button className="flex h-5 w-5 items-center rounded-full bg-black p-1">
+                        <button
+                          onClick={() => removeItem(product.id)}
+                          className="flex h-5 w-5 items-center rounded-full bg-black p-1"
+                        >
                           <span className="sr-only">remove from cart</span>
                           <XMarkIcon className="h-4 w-4 text-white" />
                         </button>

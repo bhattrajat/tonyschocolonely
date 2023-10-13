@@ -13,6 +13,7 @@
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
     "@supabase/auth-helpers-nextjs": "^0.8.1",
+    "@uidotdev/usehooks": "^2.4.0",
     "clsx": "^2.0.0",
     "next": "13.5.4",
     "react": "^18",
