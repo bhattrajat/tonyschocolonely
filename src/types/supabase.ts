@@ -12,6 +12,7 @@ export interface Database {
       products: {
         Row: {
           bars: number
+          categories: Database["public"]["Enums"]["category"][] | null
           created_at: string
           id: number
           image_url: string
@@ -21,6 +22,7 @@ export interface Database {
         }
         Insert: {
           bars: number
+          categories?: Database["public"]["Enums"]["category"][] | null
           created_at?: string
           id?: number
           image_url: string
@@ -30,6 +32,7 @@ export interface Database {
         }
         Update: {
           bars?: number
+          categories?: Database["public"]["Enums"]["category"][] | null
           created_at?: string
           id?: number
           image_url?: string
@@ -47,7 +50,7 @@ export interface Database {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      category: "big-bars" | "small-bars" | "dark-chocolate" | "milk-chocolate"
     }
     CompositeTypes: {
       [_ in never]: never

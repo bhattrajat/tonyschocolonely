@@ -18,16 +18,22 @@ export default async function Home({
   let query = supabase.from("products").select();
   const searchQuery = searchParams["search"];
   const sortBy = searchParams["sortBy"];
+  const categories = searchParams["category"];
   if (typeof searchQuery === "string" && searchQuery) {
     query = query.ilike("name", `%${searchQuery}%`);
   }
   if (typeof sortBy === "string" && sortBy) {
-    console.log(sortBy);
     if (sortBy === "priceAsc") {
       query = query.order("price", { ascending: true });
     } else {
       query = query.order("price", { ascending: false });
     }
+  }
+  if (categories && categories.length > 0) {
+    query = query.contains(
+      "categories",
+      Array.isArray(categories) ? categories : [categories],
+    );
   }
   const { data: products } = await query;
 
@@ -37,6 +43,12 @@ export default async function Home({
         <Search />
         <Filters />
       </section>
+      {!products ||
+        (products.length === 0 && (
+          <p className="my-8 text-center text-2xl text-black">
+            Hmm, we couldn&apos;t find any products. Try changing your filters.
+          </p>
+        ))}
       <section className="my-4 grid gap-4 lg:grid-cols-3">
         {products?.map((product) => (
           <ProductItem product={product} key={product.id} />

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { RadioGroup } from "@headlessui/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useClickAway } from "@uidotdev/usehooks";
+import { clsx } from "clsx";
 
 export default function Filters() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -22,6 +23,16 @@ export default function Filters() {
     }
     router.push(pathname + "?" + params.toString());
   };
+  const toggleCategory = (value: string) => {
+    const params = new URLSearchParams(searchParams);
+    if (params.getAll("category").includes(value)) {
+      params.delete("category", value);
+    } else {
+      params.append("category", value);
+    }
+    router.push(pathname + "?" + params.toString());
+  };
+  const categories = searchParams.getAll("category");
   return (
     <>
       <button
@@ -33,58 +44,66 @@ export default function Filters() {
       {isFilterOpen && (
         <div
           ref={filtersRef}
-          className="absolute left-0 right-0 top-full z-10 mt-2 flex justify-between rounded-3xl border-2 border-black bg-yellow-400 p-4 text-black lg:px-8"
+          className="absolute left-0 right-0 top-full z-10 mt-2 flex justify-between rounded-3xl border-2 border-black bg-yellow-400 p-4 uppercase text-black lg:px-8"
         >
           <div>
-            <h2 className="text-2xl uppercase">Filters</h2>
-            <RadioGroup
-              value={searchParams.get("sortBy") ?? ""}
-              onChange={setSorting}
-              className="flex items-start gap-4 uppercase"
-            >
-              <RadioGroup.Label className="sr-only">
-                Categories
-              </RadioGroup.Label>
-              <RadioGroup.Option value="">
-                {({ checked }) => (
-                  <div
-                    className={`my-4 cursor-pointer rounded-full p-4 ${
-                      checked
-                        ? "bg-black text-white"
-                        : "border-2 border-black bg-orange-600 text-black"
-                    }`}
-                  >
-                    Newest First
-                  </div>
-                )}
-              </RadioGroup.Option>
-              <RadioGroup.Option value="priceAsc">
-                {({ checked }) => (
-                  <div
-                    className={`my-4 cursor-pointer rounded-full p-4 ${
-                      checked
-                        ? "bg-black text-white"
-                        : "border-2 border-black bg-orange-600 text-black"
-                    }`}
-                  >
-                    Price ascending
-                  </div>
-                )}
-              </RadioGroup.Option>
-              <RadioGroup.Option value="priceDec">
-                {({ checked }) => (
-                  <div
-                    className={`my-4 cursor-pointer rounded-full p-4 ${
-                      checked
-                        ? "rounded-3xl bg-black text-white"
-                        : "border-2 border-black bg-orange-600 text-black"
-                    }`}
-                  >
-                    Price descending
-                  </div>
-                )}
-              </RadioGroup.Option>
-            </RadioGroup>
+            <h2 className="text-2xl">Filters</h2>
+            <div className="mt-4 flex flex-wrap gap-4">
+              <div>
+                <input
+                  id="small-bars"
+                  type="checkbox"
+                  className={"h-8 w-8 bg-orange-500 stroke-black text-black"}
+                  checked={searchParams
+                    .getAll("category")
+                    .includes("small-bars")}
+                  onChange={() => toggleCategory("small-bars")}
+                />
+                <label className="ml-2" htmlFor="small-bars">
+                  Small bars
+                </label>
+              </div>
+              <div>
+                <input
+                  id="big-bars"
+                  type="checkbox"
+                  className={"h-8 w-8 bg-orange-500 stroke-black text-black "}
+                  checked={searchParams.getAll("category").includes("big-bars")}
+                  onChange={() => toggleCategory("big-bars")}
+                />
+                <label className="ml-2" htmlFor="big-bars">
+                  Big bars
+                </label>
+              </div>
+              <div>
+                <input
+                  id="milk-chocolate"
+                  type="checkbox"
+                  className={"h-8 w-8 bg-orange-500 stroke-black text-black "}
+                  checked={searchParams
+                    .getAll("category")
+                    .includes("milk-chocolate")}
+                  onChange={() => toggleCategory("milk-chocolate")}
+                />
+                <label className="ml-2" htmlFor="milk-chocolate">
+                  Milk chocolate
+                </label>
+              </div>
+              <div>
+                <input
+                  id="milk-chocolate"
+                  type="checkbox"
+                  className={"h-8 w-8 bg-orange-500 stroke-black text-black"}
+                  checked={searchParams
+                    .getAll("category")
+                    .includes("dark-chocolate")}
+                  onChange={() => toggleCategory("dark-chocolate")}
+                />
+                <label className="ml-2" htmlFor="dark-chocolate">
+                  Dark chocolate
+                </label>
+              </div>
+            </div>
           </div>
           <div>
             <RadioGroup
