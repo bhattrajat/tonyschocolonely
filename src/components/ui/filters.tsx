@@ -44,7 +44,7 @@ export default function Filters() {
       {isFilterOpen && (
         <div
           ref={filtersRef}
-          className="absolute left-0 right-0 top-full z-10 mt-2 flex justify-between rounded-3xl border-2 border-black bg-yellow-400 p-4 uppercase text-black lg:px-8"
+          className="absolute left-0 right-0 top-full z-10 mt-2 flex flex-col justify-between gap-4 rounded-3xl border-2 border-black bg-yellow-400 p-4 uppercase text-black lg:flex-row lg:px-8"
         >
           <div>
             <h2 className="text-2xl">Filters</h2>
