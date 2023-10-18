@@ -6,8 +6,9 @@ import { useShoppingCart } from "use-shopping-cart";
 
 type Props = {
   product: Database["public"]["Tables"]["products"]["Row"];
+  priority: boolean;
 };
-export default function ProductItem({ product }: Props) {
+export default function ProductItem({ product, priority }: Props) {
   const { addItem } = useShoppingCart();
   return (
     <div className="group h-full rounded-2xl border-2 border-black bg-white p-8 uppercase text-black shadow-brutal">
@@ -18,6 +19,7 @@ export default function ProductItem({ product }: Props) {
           className="h-auto w-auto -rotate-45 group-hover:rotate-0"
           width={400}
           height={400}
+          priority={priority}
           alt={product.name}
         />
       </div>

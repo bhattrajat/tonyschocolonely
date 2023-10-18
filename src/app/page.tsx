@@ -50,8 +50,8 @@ export default async function Home({
           </p>
         ))}
       <section className="my-4 grid gap-4 lg:grid-cols-3">
-        {products?.map((product) => (
-          <ProductItem product={product} key={product.id} />
+        {products?.map((product, idx) => (
+          <ProductItem product={product} key={product.id} priority={idx < 3} />
         ))}
       </section>
     </main>
