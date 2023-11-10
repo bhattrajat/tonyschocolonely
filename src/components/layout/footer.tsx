@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="flex flex-col justify-between bg-black p-4 text-white lg:flex-row">
       <a
         className="flex items-center underline"
-        href="tonyschocolonely.tinloof.com"
+        href="https://tonyschocolonely.tinloof.com/"
         target="_blank"
       >
         Inspired by Tinloof{" "}
