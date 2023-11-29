@@ -25,3 +25,7 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+a, a *, button, button *, input[type=image], input[type=submit], label[for], select {
+  cursor: url(/assets/cursor-pointer.png),pointer;
+}

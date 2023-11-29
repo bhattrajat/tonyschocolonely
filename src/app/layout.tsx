@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cutive.className}>
+      <body className={`${cutive.className} cursor-brutal-arrow`}>
         <Providers>
           <Header />
           {children}
