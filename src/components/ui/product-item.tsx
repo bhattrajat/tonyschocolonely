@@ -13,7 +13,7 @@ export default function ProductItem({ product, priority }: Props) {
   return (
     <div className="group h-full rounded-2xl border-2 border-black bg-white p-8 uppercase text-black shadow-brutal">
       <h2 className="text-xl">{product.name}</h2>
-      <div className="flex h-[440px] items-center justify-center">
+      <div className="flex h-80 items-center justify-center lg:h-[500px]">
         <Image
           src={product.image_url}
           className="h-auto w-auto -rotate-45 group-hover:rotate-0"

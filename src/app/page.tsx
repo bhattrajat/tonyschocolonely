@@ -49,7 +49,7 @@ export default async function Home({
             Hmm, we couldn&apos;t find any products. Try changing your filters.
           </p>
         ))}
-      <section className="my-4 grid gap-4 lg:grid-cols-3">
+      <section className="my-6 grid gap-4 lg:grid-cols-3">
         {products?.map((product, idx) => (
           <ProductItem product={product} key={product.id} priority={idx < 3} />
         ))}
